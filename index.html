@@ -232,10 +232,34 @@
 
   .footer-note { text-align: center; font-size: 11px; color: #484f58; margin-top: 30px; }
 
-  .bolao-title {
-    text-align: center;
-    margin-bottom: 14px;
-    line-height: 1;
+  /* Bandeiras animadas */
+  .team-flag {
+    width: 64px; height: 42px; border-radius: 6px; overflow: hidden;
+    margin-bottom: 10px; flex-shrink: 0;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  .team-flag svg { width: 100%; height: 100%; display: block; }
+  .flag-wave {
+    animation: wave 2s ease-in-out infinite;
+    transform-origin: left center;
+  }
+  @keyframes wave {
+    0%   { transform: skewY(0deg) scaleX(1); }
+    25%  { transform: skewY(1.5deg) scaleX(1.01); }
+    50%  { transform: skewY(0deg) scaleX(1); }
+    75%  { transform: skewY(-1.5deg) scaleX(1.01); }
+    100% { transform: skewY(0deg) scaleX(1); }
+  }
+  .flag-wave-2 {
+    animation: wave2 2.3s ease-in-out infinite;
+    transform-origin: left center;
+  }
+  @keyframes wave2 {
+    0%   { transform: skewY(0deg) scaleX(1); }
+    30%  { transform: skewY(-1.8deg) scaleX(1.01); }
+    60%  { transform: skewY(1.2deg) scaleX(1); }
+    100% { transform: skewY(0deg) scaleX(1); }
   }
   .bolao-title .line1 {
     display: block;
@@ -327,7 +351,7 @@
 
 <div id="splash">
   <div class="splash-content">
-      <img src="splash.png" class="splash-logo" alt="Bolão da Copa">
+      <img src="splash2.png" class="splash-logo" alt="Bolão do Jogo">
   </div>
 </div>
   </div>
@@ -338,21 +362,44 @@
   <div class="main-card">
     <div class="match-block">
       <div class="bolao-title">
-        <span class="line1">BOLÃO</span>
-        <span class="line2">DO JOGO</span>
+        <img src="splash2.png" alt="Bolão do Jogo" style="width: 180px; height: auto; display: block; margin: 0 auto -10px;">
       </div>
-      <div class="competition">Copa do Mundo FIFA 2026 · Grupo C</div>
+      <div class="competition">Copa do Mundo FIFA 2026 · Oitavas de Final</div>
       <div class="teams">
         <div class="team">
           <div class="team-flag">
-            <svg viewBox="0 0 720 504" xmlns="http://www.w3.org/2000/svg"><rect width="720" height="504" fill="#009739"/><polygon points="360,72 648,252 360,432 72,252" fill="#fedd00"/><circle cx="360" cy="252" r="105" fill="#012169"/><path d="M255,252 a105,105 0 0 1 210,0" fill="none" stroke="#fff" stroke-width="10"/></svg>
+            <svg viewBox="0 0 720 504" xmlns="http://www.w3.org/2000/svg" class="flag-wave">
+              <rect width="720" height="504" fill="#009739"/>
+              <polygon points="360,72 648,252 360,432 72,252" fill="#fedd00"/>
+              <circle cx="360" cy="252" r="105" fill="#012169"/>
+              <path d="M255,252 a105,105 0 0 1 210,0" fill="none" stroke="#fff" stroke-width="10"/>
+              <!-- Brilho de ondulação -->
+              <linearGradient id="sheen1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:rgba(255,255,255,0);stop-opacity:0"/>
+                <stop offset="40%" style="stop-color:rgba(255,255,255,0.12);stop-opacity:1"/>
+                <stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:0"/>
+              </linearGradient>
+              <rect width="720" height="504" fill="url(#sheen1)" style="animation: sheenMove 2s ease-in-out infinite;"/>
+            </svg>
           </div>
           <div class="team-name">Brasil</div>
         </div>
         <div class="vs">x</div>
         <div class="team">
           <div class="team-flag">
-            <svg viewBox="0 0 720 504" xmlns="http://www.w3.org/2000/svg"><rect width="720" height="504" fill="#EF2B2D"/><rect x="0" y="196" width="720" height="112" fill="#fff"/><rect x="196" y="0" width="112" height="504" fill="#fff"/><rect x="0" y="210" width="720" height="84" fill="#003087"/><rect x="210" y="0" width="84" height="504" fill="#003087"/></svg>
+            <svg viewBox="0 0 720 504" xmlns="http://www.w3.org/2000/svg" class="flag-wave-2">
+              <rect width="720" height="504" fill="#EF2B2D"/>
+              <rect x="0" y="196" width="720" height="112" fill="#fff"/>
+              <rect x="196" y="0" width="112" height="504" fill="#fff"/>
+              <rect x="0" y="210" width="720" height="84" fill="#003087"/>
+              <rect x="210" y="0" width="84" height="504" fill="#003087"/>
+              <linearGradient id="sheen2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:rgba(255,255,255,0);stop-opacity:0"/>
+                <stop offset="50%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1"/>
+                <stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:0"/>
+              </linearGradient>
+              <rect width="720" height="504" fill="url(#sheen2)"/>
+            </svg>
           </div>
           <div class="team-name">Noruega</div>
         </div>
