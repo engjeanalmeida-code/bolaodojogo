@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bolão Brasil x Noruega - Copa do Mundo 2026</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    min-height: 100vh;
+    padding: 20px 16px 60px;
+  }
+  .container { max-width: 480px; margin: 0 auto; }
+
+  .main-card {
+    background: linear-gradient(160deg, #020818 0%, #061235 60%, #030d28 100%);
+    border: 1.5px solid #1e3a8a80;
+    border-radius: 20px;
+    padding: 24px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 0 40px #1e3a8a33, 0 2px 20px #00000088;
+  }
+  .main-card .divider { border: none; border-top: 1px solid #1e3a8a50; margin: 18px 0; }
+
+  .match-block { text-align: center; }
+  .competition { font-size: 12px; color: #93c5fd; margin-bottom: 14px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .teams { display: flex; align-items: flex-start; justify-content: center; gap: 24px; margin-bottom: 8px; }
+  .team { display: flex; flex-direction: column; align-items: center; min-width: 90px; }
+  .team-flag { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; margin-bottom: 10px; border: 2px solid #3b82f6; flex-shrink: 0; box-shadow: 0 0 14px #3b82f655; }
+  .team-flag svg { width: 100%; height: 100%; display: block; }
+  .team-name { font-size: 17px; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; text-shadow: 0 1px 6px #00000088; }
+  .vs { color: #f78c1f; font-size: 16px; font-weight: 800; padding-top: 20px; }
+  .match-info { font-size: 12px; color: #93c5fd; margin-top: 10px; }
+
+  .value-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .value-row .value-label { font-size: 13px; color: #93c5fd; font-weight: 600; }
+  .value-row .value-amount { font-size: 22px; font-weight: 800; color: #4ade80; text-shadow: 0 0 12px #4ade8055; }
+
+  .rules-block { margin-top: 16px; }
+  .rules-title { font-size: 13px; color: #93c5fd; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .rules-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .rules-list li { font-size: 13px; line-height: 1.5; color: #e2e8f0; display: flex; gap: 8px; }
+  .rules-list .rule-num { color: #f78c1f; font-weight: 700; flex-shrink: 0; }
+
+  .pix-block .pix-title { font-size: 13px; color: #93c5fd; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .pix-block .pix-name { font-size: 15px; font-weight: 800; margin-bottom: 12px; color: #ffffff; }
+  .pix-copiacola-btn {
+    width: 100%;
+    background: #1f6feb;
+    border-color: #1f6feb;
+    color: #fff;
+    font-weight: 700;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+  .pix-copiacola-btn:hover { filter: brightness(1.15); }
+  .pix-copiacola-btn.copied { background: #238636 !important; border-color: #238636 !important; }
+
+  .section { margin-bottom: 24px; }
+  .label { font-size: 13px; color: #93c5fd; margin-bottom: 8px; display: block; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .closed-box {
+    background: #2d1414;
+    border: 1px solid #f85149;
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .closed-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #f85149;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .closed-text { font-size: 13px; color: #e6edf3; line-height: 1.5; }
+
+  input[type="text"], input[type="number"], input[type="password"] {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    color: #e6edf3;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 15px;
+    width: 100%;
+  }
+  input:focus { outline: none; border-color: #58a6ff; }
+
+  .name-row { display: flex; gap: 8px; }
+  .name-row input { flex: 1; }
+
+  button {
+    background: #21262d;
+    border: 1px solid #30363d;
+    color: #e6edf3;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  button:hover { background: #30363d; }
+  button:active { transform: scale(0.98); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .player-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .player-row .who { font-size: 13px; color: #8b949e; }
+  .player-row .who b { color: #e6edf3; font-weight: 600; }
+  .change-btn { font-size: 12px; padding: 5px 10px; }
+
+  .score-inputs { display: flex; align-items: flex-end; justify-content: center; gap: 18px; margin: 18px 0; }
+  .score-box { text-align: center; }
+  .score-box .team-label { font-size: 12px; color: #8b949e; margin-bottom: 6px; }
+  .score-box input { width: 64px; text-align: center; font-size: 22px; font-weight: 600; padding: 10px; }
+  .score-x { font-size: 16px; color: #8b949e; padding-bottom: 14px; }
+
+  .submit-btn {
+    width: 100%;
+    background: #1f6feb;
+    border-color: #1f6feb;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px;
+    font-size: 15px;
+  }
+  .submit-btn:hover { background: #388bfd; }
+
+  .feedback { text-align: center; font-size: 13px; margin-top: 10px; min-height: 18px; }
+  .feedback.success { color: #3fb950; }
+  .feedback.error { color: #f85149; }
+
+  .list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .list-header .title { font-size: 15px; font-weight: 600; }
+  .list-header .count { font-size: 12px; color: #8b949e; }
+
+  .guess-list { display: flex; flex-direction: column; gap: 4px; }
+  .guess-num { font-size: 11px; font-weight: 700; color: #484f58; min-width: 18px; text-align: right; margin-right: 6px; flex-shrink: 0; }
+  .guess-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7px 12px; border-radius: 8px; background: #161b22; border: 1px solid #30363d;
+    gap: 10px;
+  }
+  .guess-item.mine { background: #0d2847; border-color: #1f6feb; }
+  .guess-item .name { font-size: 13px; }
+  .guess-item.mine .name { font-weight: 600; color: #79c0ff; }
+  .guess-item .time { font-size: 10px; color: #8b949e; margin-top: 1px; }
+  .guess-item .right-col { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .guess-item .score { font-size: 14px; font-weight: 600; }
+  .guess-item.mine .score { color: #79c0ff; }
+  .guess-item .item-value { font-size: 11px; color: #3fb950; font-weight: 600; min-width: 52px; text-align: right; }
+
+  .pay-badge {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .pay-badge.paid { background: #0d2818; color: #3fb950; border: 1px solid #238636; }
+  .pay-badge.pending { background: #2d2410; color: #d29922; border: 1px solid #9e6a03; }
+  .pay-toggle-btn { font-size: 11px; padding: 4px 8px; }
+  .delete-guess-btn { font-size: 11px; padding: 4px 8px; color: #f85149; border-color: #5a2323; }
+  .delete-guess-btn:hover { background: #2d1414; border-color: #f85149; }
+
+  .empty-state, .loading-state { text-align: center; font-size: 13px; color: #8b949e; padding: 24px 0; }
+  .error-state { text-align: center; font-size: 12px; color: #f85149; padding: 24px 0; }
+
+  .total-card {
+    background: #161b22;
+    border: 1px solid #238636;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .total-card .total-label { font-size: 13px; color: #8b949e; }
+  .total-card .total-amount { font-size: 22px; font-weight: 700; color: #3fb950; }
+
+  .admin-row { margin-top: 24px; text-align: center; }
+  .admin-link { font-size: 12px; color: #484f58; background: none; border: none; padding: 4px; text-decoration: underline; cursor: pointer; }
+  .admin-gate { display: flex; gap: 8px; margin-top: 10px; justify-content: center; }
+  .admin-gate input { max-width: 140px; }
+
+  .result-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .result-title { font-size: 15px; font-weight: 600; margin-bottom: 14px; }
+  .clear-result-btn { width: 100%; margin-top: 8px; font-size: 12px; color: #f85149; }
+
+  .final-score-display {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin-bottom: 16px; padding: 12px; background: #0d1117; border-radius: 10px;
+  }
+  .final-score-display .fs-team { font-size: 13px; color: #8b949e; }
+  .final-score-display .fs-value { font-size: 22px; font-weight: 700; }
+  .final-score-display .fs-x { color: #8b949e; }
+
+  .winners-summary {
+    font-size: 13px; color: #c9d1d9; text-align: center; margin-bottom: 14px; line-height: 1.5;
+  }
+  .winners-summary b { color: #3fb950; }
+
+  .winner-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 12px; border-radius: 10px; background: #0d2818; border: 1px solid #238636;
+    margin-bottom: 6px;
+  }
+  .winner-item .name { font-size: 14px; font-weight: 600; color: #3fb950; }
+  .winner-item .prize { font-size: 15px; font-weight: 700; color: #3fb950; }
+
+  .organizer-cut {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: #8b949e; margin-top: 10px; padding-top: 10px; border-top: 1px solid #30363d;
+  }
+  .organizer-cut b { color: #d29922; }
+
+  .footer-note { text-align: center; font-size: 11px; color: #484f58; margin-top: 30px; }
+
+  .bolao-title {
+    text-align: center;
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+  .bolao-title .line1 {
+    display: block;
+    font-size: 38px;
+    font-weight: 900;
+    font-style: italic;
+    color: #f5c200;
+    -webkit-text-stroke: 4px #1a4a1a;
+    text-stroke: 4px #1a4a1a;
+    paint-order: stroke fill;
+    text-shadow:
+      3px 3px 0 #1a4a1a,
+      -1px -1px 0 #1a4a1a,
+      4px 6px 8px #00000099;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .bolao-title .line2 {
+    display: block;
+    font-size: 34px;
+    font-weight: 900;
+    font-style: italic;
+    color: #ffffff;
+    -webkit-text-stroke: 4px #1a4a1a;
+    text-stroke: 4px #1a4a1a;
+    paint-order: stroke fill;
+    text-shadow:
+      3px 3px 0 #1a4a1a,
+      -1px -1px 0 #1a4a1a,
+      4px 6px 8px #00000099;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* SPLASH SCREEN */
+  #splash {
+    position: fixed;
+    inset: 0;
+    background: #020818;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+  }
+  #splash img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  #splash.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+.splash-content{
+    text-align:center;
+}
+.splash-logo{
+    width:320px;
+    max-width:90vw;
+    opacity:0;
+    animation: logoAppear 1.2s ease forwards;
+}
+.splash-title{
+    margin-top:20px;
+    font-size:48px;
+    font-weight:900;
+    letter-spacing:3px;
+    color:#ffd700;
+    text-shadow:0 0 10px rgba(255,215,0,.8),0 0 30px rgba(255,215,0,.5);
+    opacity:0;
+    transform:translateY(30px);
+    animation:titleAppear 1s ease forwards;
+    animation-delay:1.3s;
+}
+@keyframes logoAppear{
+    from{opacity:0;transform:scale(.7);}
+    to{opacity:1;transform:scale(1);}
+}
+@keyframes titleAppear{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+</style>
+</head>
+<body>
+
+<div id="splash">
+  <div class="splash-content">
+      <img src="splash.png" class="splash-logo" alt="Bolão da Copa">
+  </div>
+</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="main-card">
+    <div class="match-block">
+      <div class="bolao-title">
+        <span class="line1">BOLÃO</span>
+        <span class="line2">DA COPA</span>
+      </div>
+      <div class="competition">Copa do Mundo FIFA 2026 · Grupo C</div>
+      <div class="teams">
+        <div class="team">
+          <div class="team-flag">
+            <svg viewBox="0 0 720 504" xmlns="http://www.w3.org/2000/svg"><rect width="720" height="504" fill="#009739"/><polygon points="360,72 648,252 360,432 72,252" fill="#fedd00"/><circle cx="360" cy="252" r="105" fill="#012169"/><path d="M255,252 a105,105 0 0 1 210,0" fill="none" stroke="#fff" stroke-width="10"/></svg>
+          </div>
+          <div class="team-name">Brasil</div>
+        </div>
+        <div class="vs">x</div>
+        <div class="team">
+          <div class="team-flag">
+            <svg viewBox="0 0 720 504" xmlns="http://www.w3.org/2000/svg"><rect width="720" height="504" fill="#EF2B2D"/><rect x="0" y="196" width="720" height="112" fill="#fff"/><rect x="196" y="0" width="112" height="504" fill="#fff"/><rect x="0" y="210" width="720" height="84" fill="#003087"/><rect x="210" y="0" width="84" height="504" fill="#003087"/></svg>
+          </div>
+          <div class="team-name">Noruega</div>
+        </div>
+      </div>
+      <div class="match-info">Dom, 05/07/2026 · 17h00 (Brasília) · MetLife Stadium, Nova Jersey · Oitavas de final</div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="value-row">
+      <span class="value-label">Valor por palpite</span>
+      <span class="value-amount">R$ 10,00</span>
+    </div>
+
+    <div class="rules-block">
+      <div class="rules-title">Regras do bolão</div>
+      <ul class="rules-list">
+        <li><span class="rule-num">1.</span><span>Palpites aceitos somente até <span style="color:#f5c200;font-weight:700;">16:55h do dia 05/07/2026</span>, válidos apenas para os 90 minutos de jogo.</span></li>
+        <li><span class="rule-num">2.</span><span>Cada pessoa pode palpitar <span style="color:#f5c200;font-weight:700;">quantas vezes quiser</span>, pagando o valor de R$ 10,00 por palpite. <span style="color:#f5c200;font-weight:700;text-transform:uppercase;">O PAGAMENTO VIA PIX DEVE SER REALIZADO PELA CONTA DO MESMO NOME CADASTRADO NO PALPITE</span>, para facilitar a identificação pelo organizador.</span></li>
+        <li><span class="rule-num">3.</span><span>Vence o bolão somente quem acertar o <span style="color:#f5c200;font-weight:700;">placar exato</span> do jogo, recebendo o valor total arrecadado <span style="color:#f5c200;font-weight:700;text-transform:uppercase;">COM RETENÇÃO DE 5% PARA O ORGANIZADOR DO BOLÃO</span>.</span></li>
+        <li><span class="rule-num">4.</span><span>Caso ninguém acerte o placar, o valor fica <span style="color:#f5c200;font-weight:700;">acumulado</span> para a próxima partida, retendo-se 5% do valor total arrecadado para o organizador do bolão.</span></li>
+        <li><span class="rule-num">5.</span><span>Após enviar seu palpite ele aparecerá como <span style="color:#d29922;font-weight:700;">Pendente</span>. Tão logo o organizador identifique o Pix, o status será alterado para <span style="color:#3fb950;font-weight:700;">Pago</span>.</span></li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <div class="pix-block">
+      <div class="pix-title">Pagamento via Pix</div>
+      <div class="pix-name">Jean A. Nascimento</div>
+      <button id="pix-copiacola-btn" class="pix-copiacola-btn">📋 Copiar Pix — 1 palpite (R$ 10,00)</button>
+      <button id="pix-copiacola-btn-20" class="pix-copiacola-btn" style="margin-top: 8px; background:#1a5e3a; border-color:#1a5e3a;">📋 Copiar Pix — 2 palpites (R$ 20,00)</button>
+    </div>
+
+    <hr class="divider">
+
+    <div id="closed-notice" style="display:none;">
+      <div class="closed-box">
+        <span class="closed-badge">Encerrado</span>
+        <span class="closed-text">O prazo para palpites terminou às 16:55h de 05/07/2026.</span>
+      </div>
+    </div>
+
+    <div id="name-gate">
+      <span class="label">Seu nome no bolão</span>
+      <div class="name-row">
+        <input type="text" id="name-input" placeholder="Digite seu nome" maxlength="30" autocomplete="off">
+        <button id="name-save">Confirmar</button>
+      </div>
+    </div>
+
+    <div id="guess-form" style="display:none;">
+      <div class="player-row">
+        <span class="who">Palpitando como <b id="current-name"></b></span>
+        <button id="change-name" class="change-btn">Trocar</button>
+      </div>
+
+      <div id="palpite-hint" style="font-size:12px; color:#93c5fd; text-align:center; margin-bottom:10px; display:none;"></div>
+
+      <!-- Palpite 1 -->
+      <div id="palpite1-block">
+        <div style="font-size:12px; color:#8b949e; margin-bottom:6px;" id="palpite1-label">Palpite</div>
+        <div class="score-inputs">
+          <div class="score-box">
+            <div class="team-label">Brasil</div>
+            <input type="number" id="score-br" min="0" max="20" value="0">
+          </div>
+          <div class="score-x">x</div>
+          <div class="score-box">
+            <div class="team-label">Noruega</div>
+            <input type="number" id="score-ht" min="0" max="20" value="0">
+          </div>
+        </div>
+      </div>
+
+      <!-- Palpite 2 (só aparece quando Pix R$20 for copiado) -->
+      <div id="palpite2-block" style="display:none; margin-top:12px;">
+        <div style="font-size:12px; color:#8b949e; margin-bottom:6px;">Palpite 2</div>
+        <div class="score-inputs">
+          <div class="score-box">
+            <div class="team-label">Brasil</div>
+            <input type="number" id="score-br2" min="0" max="20" value="0">
+          </div>
+          <div class="score-x">x</div>
+          <div class="score-box">
+            <div class="team-label">Noruega</div>
+            <input type="number" id="score-ht2" min="0" max="20" value="0">
+          </div>
+        </div>
+      </div>
+
+      <button id="submit-guess" class="submit-btn" style="margin-top:14px;">Enviar palpite</button>
+      <div id="feedback" class="feedback"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="list-header">
+      <span class="title">Palpites de todo mundo</span>
+      <span class="count" id="count-badge"></span>
+    </div>
+    <div id="delete-all-wrap" style="display:none; margin-bottom: 10px;">
+      <button id="delete-all-btn" style="width:100%; background:#2d1414; border-color:#f85149; color:#f85149; font-weight:600; padding: 8px;">🗑️ Excluir todos os palpites</button>
+    </div>
+    <div id="guess-list" class="guess-list">
+      <div class="loading-state">Carregando palpites...</div>
+    </div>
+    <div class="total-card">
+      <span class="total-label">Total arrecadado (pago)</span>
+      <span class="total-amount" id="total-amount">R$ 0,00</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="result-card">
+      <div class="result-title">Resultado final e vencedores</div>
+
+      <div id="admin-result-form" style="display:none;">
+        <span class="label">Placar final do jogo</span>
+        <div class="score-inputs" style="margin: 12px 0;">
+          <div class="score-box">
+            <div class="team-label">Brasil</div>
+            <input type="number" id="final-score-br" min="0" max="20">
+          </div>
+          <div class="score-x">x</div>
+          <div class="score-box">
+            <div class="team-label">Noruega</div>
+            <input type="number" id="final-score-ht" min="0" max="20">
+          </div>
+        </div>
+        <button id="save-result-btn" class="submit-btn">Salvar resultado</button>
+        <button id="clear-result-btn" class="clear-result-btn">Limpar resultado</button>
+        <div id="result-feedback" class="feedback"></div>
+      </div>
+
+      <div id="result-display">
+        <div class="empty-state">O organizador ainda não lançou o resultado final.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-row">
+    <button id="admin-link" class="admin-link">Sou o organizador</button>
+    <div id="admin-gate" class="admin-gate" style="display:none;">
+      <input type="password" id="admin-password" placeholder="Senha" maxlength="10">
+      <button id="admin-login">Entrar</button>
+    </div>
+  </div>
+
+  <div class="footer-note">Bolão Brasil x Noruega · Copa do Mundo 2026</div>
+</div>
+
+<script>
+  const SUPABASE_URL = "https://hbztfjlxbpghycjmabnc.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_6Fp_2dvD2qHDbNYS57qB8w_ObM8TeJg";
+  const NAME_STORAGE_KEY = "bolao_player_name";
+  const ADMIN_STORAGE_KEY = "bolao_admin_unlocked";
+  const ADMIN_PASSWORD = "0101";
+  const VALOR_PALPITE = 10;
+  // Prazo: 05/07/2026, 16h55 horário de Brasília (UTC-3) = 05/07/2026 19:55 UTC
+  const DEADLINE = new Date("2026-07-05T19:55:00Z");
+
+  const closedNotice = document.getElementById("closed-notice");
+  const nameGate = document.getElementById("name-gate");
+  const nameInput = document.getElementById("name-input");
+  const nameSave = document.getElementById("name-save");
+  const guessForm = document.getElementById("guess-form");
+  const currentNameEl = document.getElementById("current-name");
+  const changeNameBtn = document.getElementById("change-name");
+  const scoreBr = document.getElementById("score-br");
+  const scoreHt = document.getElementById("score-ht");
+  const submitBtn = document.getElementById("submit-guess");
+  const feedback = document.getElementById("feedback");
+  const guessList = document.getElementById("guess-list");
+  const countBadge = document.getElementById("count-badge");
+  const totalAmountEl = document.getElementById("total-amount");
+  const pixCopiaColaBtn = document.getElementById("pix-copiacola-btn");
+  const adminLink = document.getElementById("admin-link");
+  const adminGate = document.getElementById("admin-gate");
+  const adminPassword = document.getElementById("admin-password");
+  const adminLogin = document.getElementById("admin-login");
+  const adminResultForm = document.getElementById("admin-result-form");
+  const finalScoreBr = document.getElementById("final-score-br");
+  const finalScoreHt = document.getElementById("final-score-ht");
+  const saveResultBtn = document.getElementById("save-result-btn");
+  const clearResultBtn = document.getElementById("clear-result-btn");
+  const resultFeedback = document.getElementById("result-feedback");
+  const resultDisplay = document.getElementById("result-display");
+  const deleteAllBtn = document.getElementById("delete-all-btn");
+  const deleteAllWrap = document.getElementById("delete-all-wrap");
+
+  const RESULT_ID = 1;
+  const ORG_CUT_WIN = 0.05;
+  const ORG_CUT_NO_WIN = 0.05;
+  const PIX_COPIA_COLA_10 = "00020126580014BR.GOV.BCB.PIX0136550272d9-169f-4a40-8378-a3c6ed83ee76520400005303986540510.005802BR5923Jean Almeida Nascimento6009SAO PAULO62140510cjtwabCQZB6304FE00";
+  const PIX_COPIA_COLA_20 = "00020126580014BR.GOV.BCB.PIX0136550272d9-169f-4a40-8378-a3c6ed83ee76520400005303986540520.005802BR5923Jean Almeida Nascimento6009SAO PAULO62140510z0yLwd76UB6304A4E3";
+
+  let myName = null;
+  let isAdmin = false;
+  let latestRows = [];
+  let modoDoisPalpites = false;
+
+  const palpite2Block = document.getElementById("palpite2-block");
+  const palpite1Label = document.getElementById("palpite1-label");
+  const palpiteHint = document.getElementById("palpite-hint");
+  const scoreBr2 = document.getElementById("score-br2");
+  const scoreHt2 = document.getElementById("score-ht2");
+
+  function escapeHtml(str) {
+    const d = document.createElement("div");
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  function formatBRL(value) {
+    return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  }
+
+  function setFeedback(msg, type) {
+    feedback.textContent = msg;
+    feedback.className = "feedback" + (type ? " " + type : "");
+  }
+
+  function formatTime(iso) {
+    try {
+      const d = new Date(iso);
+      return d.toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function copyPix(code, btn, label) {
+    navigator.clipboard.writeText(code).catch(function() {
+      const ta = document.createElement("textarea");
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    });
+    btn.textContent = "✅ Código copiado!";
+    btn.classList.add("copied");
+    setTimeout(function() {
+      btn.textContent = label;
+      btn.classList.remove("copied");
+    }, 2500);
+  }
+
+  function ativarModo(dois) {
+    modoDoisPalpites = dois;
+    if (dois) {
+      palpite1Label.textContent = "Palpite 1";
+      palpite2Block.style.display = "block";
+      submitBtn.textContent = "Enviar 2 palpites";
+      palpiteHint.textContent = "✅ Pix de R$ 20,00 copiado — preencha os dois palpites abaixo.";
+      palpiteHint.style.display = "block";
+    } else {
+      palpite1Label.textContent = "Palpite";
+      palpite2Block.style.display = "none";
+      submitBtn.textContent = "Enviar palpite";
+      palpiteHint.textContent = "✅ Pix de R$ 10,00 copiado — preencha seu palpite abaixo.";
+      palpiteHint.style.display = "block";
+    }
+  }
+
+  // Botão R$ 10,00
+  pixCopiaColaBtn.addEventListener("click", function() {
+    copyPix(PIX_COPIA_COLA_10, pixCopiaColaBtn, "📋 Copiar Pix — 1 palpite (R$ 10,00)");
+    ativarModo(false);
+  });
+
+  // Botão R$ 20,00
+  const pixBtn20 = document.getElementById("pix-copiacola-btn-20");
+  pixBtn20.addEventListener("click", function() {
+    copyPix(PIX_COPIA_COLA_20, pixBtn20, "📋 Copiar Pix — 2 palpites (R$ 20,00)");
+    ativarModo(true);
+  });
+
+  adminLink.addEventListener("click", function() {
+    adminGate.style.display = adminGate.style.display === "none" ? "flex" : "none";
+    adminPassword.focus();
+  });
+
+  function tryAdminLogin() {
+    if (adminPassword.value === ADMIN_PASSWORD) {
+      isAdmin = true;
+      sessionStorage.setItem(ADMIN_STORAGE_KEY, "1");
+      adminGate.style.display = "none";
+      adminLink.textContent = "Modo organizador ativo";
+      adminPassword.value = "";
+      adminResultForm.style.display = "block";
+      deleteAllWrap.style.display = "block";
+      loadAllGuesses();
+      loadResult();
+    } else {
+      adminPassword.value = "";
+      adminPassword.placeholder = "Senha incorreta";
+    }
+  }
+
+  adminLogin.addEventListener("click", tryAdminLogin);
+  adminPassword.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") tryAdminLogin();
+  });
+
+  async function togglePago(id, novoStatus, btnEl) {
+    btnEl.disabled = true;
+    try {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites?id=eq." + id, {
+        method: "PATCH",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({ pago: novoStatus })
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      await loadAllGuesses();
+    } catch (err) {
+      btnEl.disabled = false;
+      alert("Erro ao atualizar pagamento: " + err.message);
+    }
+  }
+
+  async function deleteGuess(id, btnEl) {
+    btnEl.disabled = true;
+    try {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites?id=eq." + id, {
+        method: "DELETE",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY,
+          "Prefer": "return=minimal"
+        }
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      await loadAllGuesses();
+    } catch (err) {
+      btnEl.disabled = false;
+      alert("Erro ao excluir palpite: " + err.message);
+    }
+  }
+
+  let finalResult = null;
+
+  async function loadResult() {
+    try {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/resultado_final?select=*&id=eq." + RESULT_ID, {
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY
+        }
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const rows = await res.json();
+      finalResult = rows.length ? rows[0] : null;
+      if (finalResult && isAdmin) {
+        finalScoreBr.value = finalResult.placar_brasil;
+        finalScoreHt.value = finalResult.placar_haiti;
+      }
+      renderResult();
+    } catch (err) {
+      resultDisplay.innerHTML = '<div class="error-state">Erro ao carregar resultado: ' + escapeHtml(err.message) + '</div>';
+    }
+  }
+
+  async function saveResult() {
+    const br = parseInt(finalScoreBr.value, 10);
+    const ht = parseInt(finalScoreHt.value, 10);
+    if (isNaN(br) || isNaN(ht) || br < 0 || ht < 0) {
+      resultFeedback.textContent = "Preencha um placar válido.";
+      resultFeedback.className = "feedback error";
+      return;
+    }
+    saveResultBtn.disabled = true;
+    try {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/resultado_final", {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY,
+          "Content-Type": "application/json",
+          "Prefer": "resolution=merge-duplicates,return=minimal"
+        },
+        body: JSON.stringify({ id: RESULT_ID, placar_brasil: br, placar_haiti: ht })
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error("HTTP " + res.status + ": " + text);
+      }
+      resultFeedback.textContent = "Resultado salvo!";
+      resultFeedback.className = "feedback success";
+      await loadResult();
+      setTimeout(function() { resultFeedback.textContent = ""; }, 2500);
+    } catch (err) {
+      resultFeedback.textContent = "Erro ao salvar: " + err.message;
+      resultFeedback.className = "feedback error";
+    }
+    saveResultBtn.disabled = false;
+  }
+
+  async function clearResult() {
+    clearResultBtn.disabled = true;
+    try {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/resultado_final?id=eq." + RESULT_ID, {
+        method: "DELETE",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY,
+          "Prefer": "return=minimal"
+        }
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      finalScoreBr.value = "";
+      finalScoreHt.value = "";
+      await loadResult();
+    } catch (err) {
+      alert("Erro ao limpar resultado: " + err.message);
+    }
+    clearResultBtn.disabled = false;
+  }
+
+  saveResultBtn.addEventListener("click", saveResult);
+  clearResultBtn.addEventListener("click", clearResult);
+
+  deleteAllBtn.addEventListener("click", async function() {
+    const confirmed = confirm("Tem certeza que deseja excluir TODOS os palpites? Essa ação não pode ser desfeita.");
+    if (!confirmed) return;
+    deleteAllBtn.disabled = true;
+    deleteAllBtn.textContent = "Excluindo...";
+    try {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites?id=neq.00000000-0000-0000-0000-000000000000", {
+        method: "DELETE",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY,
+          "Prefer": "return=minimal"
+        }
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      await loadAllGuesses();
+    } catch (err) {
+      alert("Erro ao excluir todos: " + err.message);
+    }
+    deleteAllBtn.disabled = false;
+    deleteAllBtn.textContent = "🗑️ Excluir todos os palpites";
+  });
+
+  function renderResult() {
+    if (!finalResult) {
+      resultDisplay.innerHTML = '<div class="empty-state">O organizador ainda não lançou o resultado final.</div>';
+      return;
+    }
+    const fBr = finalResult.placar_brasil;
+    const fHt = finalResult.placar_haiti;
+
+    const paidRows = latestRows.filter(function(r) { return !!r.pago; });
+    const totalArrecadado = paidRows.length * VALOR_PALPITE;
+    const winners = paidRows.filter(function(r) {
+      return r.placar_brasil === fBr && r.placar_haiti === fHt;
+    });
+
+    let html = '<div class="final-score-display">' +
+      '<span class="fs-team">Brasil</span><span class="fs-value">' + fBr + '</span>' +
+      '<span class="fs-x">x</span>' +
+      '<span class="fs-value">' + fHt + '</span><span class="fs-team">Noruega</span>' +
+    '</div>';
+
+    if (winners.length === 0) {
+      const orgCut = totalArrecadado * ORG_CUT_NO_WIN;
+      const accumulated = totalArrecadado - orgCut;
+      html += '<div class="winners-summary">Ninguém acertou o placar exato (' + fBr + ' x ' + fHt + ').<br>' +
+        'O valor de <b>' + formatBRL(accumulated) + '</b> fica acumulado para a próxima partida.</div>' +
+        '<div class="organizer-cut"><span>Retido para o organizador (20%)</span><b>' + formatBRL(orgCut) + '</b></div>';
+    } else {
+      const orgCut = totalArrecadado * ORG_CUT_WIN;
+      const prizePool = totalArrecadado - orgCut;
+      const prizePerWinner = prizePool / winners.length;
+      html += '<div class="winners-summary">' + winners.length + (winners.length === 1 ? ' palpite acertou' : ' palpites acertaram') + ' o placar exato!</div>';
+      html += winners.map(function(w) {
+        return '<div class="winner-item"><span class="name">' + escapeHtml(w.nome) + '</span><span class="prize">' + formatBRL(prizePerWinner) + '</span></div>';
+      }).join("");
+      html += '<div class="organizer-cut"><span>Retido para o organizador (5%)</span><b>' + formatBRL(orgCut) + '</b></div>';
+    }
+
+    resultDisplay.innerHTML = html;
+  }
+
+  async function loadAllGuesses() {
+    try {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites?select=*&order=criado_em.desc", {
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY
+        }
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error("HTTP " + res.status + ": " + text);
+      }
+      const rows = await res.json();
+      latestRows = rows;
+      if (!rows.length) {
+        guessList.innerHTML = '<div class="empty-state">Ninguém palpitou ainda. Seja o primeiro!</div>';
+        countBadge.textContent = "";
+        totalAmountEl.textContent = formatBRL(0);
+        renderResult();
+        return;
+      }
+      countBadge.textContent = rows.length + (rows.length === 1 ? " palpite" : " palpites");
+      const paidCount = rows.filter(function(r) { return !!r.pago; }).length;
+      const total = paidCount * VALOR_PALPITE;
+      totalAmountEl.textContent = formatBRL(total);
+
+      guessList.innerHTML = rows.map(function(r, idx) {
+        const isMine = myName && r.nome === myName;
+        const pago = !!r.pago;
+        const num = rows.length - idx;
+        let payControl;
+        if (isAdmin) {
+          payControl = '<button class="pay-toggle-btn" data-id="' + r.id + '" data-next="' + (!pago) + '">' + (pago ? "Marcar pendente" : "Marcar pago") + '</button>' +
+            '<button class="delete-guess-btn" data-id="' + r.id + '" data-name="' + escapeHtml(r.nome) + '" data-score="' + r.placar_brasil + ' x ' + r.placar_haiti + '" aria-label="Excluir palpite">Excluir</button>';
+        } else {
+          payControl = '<span class="pay-badge ' + (pago ? "paid" : "pending") + '">' + (pago ? "Pago" : "Pendente") + '</span>';
+        }
+        return '<div class="guess-item' + (isMine ? " mine" : "") + '">' +
+          '<span class="guess-num">' + num + '</span>' +
+          '<div style="flex:1;min-width:0;"><div class="name">' + escapeHtml(r.nome) + '</div><div class="time">' + formatTime(r.criado_em) + '</div></div>' +
+          '<div class="right-col">' +
+            '<span class="item-value">' + formatBRL(VALOR_PALPITE) + '</span>' +
+            '<span class="score">' + r.placar_brasil + ' x ' + r.placar_haiti + '</span>' +
+            payControl +
+          '</div>' +
+        '</div>';
+      }).join("");
+
+      if (isAdmin) {
+        guessList.querySelectorAll(".pay-toggle-btn").forEach(function(btn) {
+          btn.addEventListener("click", function() {
+            const id = btn.getAttribute("data-id");
+            const next = btn.getAttribute("data-next") === "true";
+            togglePago(id, next, btn);
+          });
+        });
+        guessList.querySelectorAll(".delete-guess-btn").forEach(function(btn) {
+          btn.addEventListener("click", function() {
+            const id = btn.getAttribute("data-id");
+            const name = btn.getAttribute("data-name");
+            const score = btn.getAttribute("data-score");
+            const confirmed = confirm("Excluir o palpite de " + name + " (" + score + ")? Essa ação não pode ser desfeita.");
+            if (confirmed) {
+              deleteGuess(id, btn);
+            }
+          });
+        });
+      }
+      renderResult();
+    } catch (err) {
+      guessList.innerHTML = '<div class="error-state">Erro ao carregar palpites: ' + escapeHtml(err.message) + '</div>';
+    }
+  }
+
+  function isClosed() {
+    return new Date() >= DEADLINE;
+  }
+
+  function showGuessForm(name) {
+    myName = name;
+    currentNameEl.textContent = name;
+    nameGate.style.display = "none";
+    if (isClosed()) {
+      guessForm.style.display = "none";
+      closedNotice.style.display = "block";
+    } else {
+      guessForm.style.display = "block";
+      closedNotice.style.display = "none";
+    }
+    loadAllGuesses();
+  }
+
+  function init() {
+    if (sessionStorage.getItem(ADMIN_STORAGE_KEY) === "1") {
+      isAdmin = true;
+      adminLink.textContent = "Modo organizador ativo";
+      adminResultForm.style.display = "block";
+      deleteAllWrap.style.display = "block";
+    }
+    const saved = localStorage.getItem(NAME_STORAGE_KEY);
+    if (saved) {
+      showGuessForm(saved);
+    } else {
+      if (isClosed()) {
+        nameGate.style.display = "none";
+        closedNotice.style.display = "block";
+      }
+      loadAllGuesses();
+    }
+    loadResult();
+  }
+
+  nameSave.addEventListener("click", function() {
+    const name = nameInput.value.trim();
+    if (!name) { nameInput.focus(); return; }
+    localStorage.setItem(NAME_STORAGE_KEY, name);
+    showGuessForm(name);
+  });
+
+  nameInput.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") nameSave.click();
+  });
+
+  changeNameBtn.addEventListener("click", function() {
+    guessForm.style.display = "none";
+    nameGate.style.display = "block";
+    nameInput.value = myName || "";
+    nameInput.focus();
+  });
+
+  submitBtn.addEventListener("click", async function() {
+    if (isClosed()) {
+      guessForm.style.display = "none";
+      closedNotice.style.display = "block";
+      return;
+    }
+    submitBtn.disabled = true;
+
+    const br = parseInt(scoreBr.value, 10);
+    const ht = parseInt(scoreHt.value, 10);
+    if (isNaN(br) || isNaN(ht) || br < 0 || ht < 0) {
+      setFeedback("Preencha um placar válido no palpite 1.", "error");
+      submitBtn.disabled = false;
+      return;
+    }
+
+    if (modoDoisPalpites) {
+      const br2 = parseInt(scoreBr2.value, 10);
+      const ht2 = parseInt(scoreHt2.value, 10);
+      if (isNaN(br2) || isNaN(ht2) || br2 < 0 || ht2 < 0) {
+        setFeedback("Preencha um placar válido no palpite 2.", "error");
+        submitBtn.disabled = false;
+        return;
+      }
+      try {
+        async function enviar(placarBr, placarHt) {
+          const res = await fetch(SUPABASE_URL + "/rest/v1/palpites", {
+            method: "POST",
+            headers: {
+              "apikey": SUPABASE_KEY,
+              "Authorization": "Bearer " + SUPABASE_KEY,
+              "Content-Type": "application/json",
+              "Prefer": "return=minimal"
+            },
+            body: JSON.stringify({ nome: myName, placar_brasil: placarBr, placar_haiti: placarHt, pago: false })
+          });
+          if (!res.ok) { const t = await res.text(); throw new Error("HTTP " + res.status + ": " + t); }
+        }
+        await enviar(br, ht);
+        await enviar(br2, ht2);
+        setFeedback("2 palpites enviados!", "success");
+        await loadAllGuesses();
+        setTimeout(function() { setFeedback("", ""); }, 2500);
+      } catch (err) {
+        setFeedback("Erro ao enviar: " + err.message, "error");
+      }
+    } else {
+      try {
+        const res = await fetch(SUPABASE_URL + "/rest/v1/palpites", {
+          method: "POST",
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": "Bearer " + SUPABASE_KEY,
+            "Content-Type": "application/json",
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify({ nome: myName, placar_brasil: br, placar_haiti: ht, pago: false })
+        });
+        if (!res.ok) { const text = await res.text(); throw new Error("HTTP " + res.status + ": " + text); }
+        setFeedback("Palpite enviado!", "success");
+        await loadAllGuesses();
+        setTimeout(function() { setFeedback("", ""); }, 2500);
+      } catch (err) {
+        setFeedback("Erro ao enviar: " + err.message, "error");
+      }
+    }
+    submitBtn.disabled = false;
+  });
+
+  // SPLASH SCREEN
+  const splash = document.getElementById("splash");
+  setTimeout(function() {
+    splash.classList.add("fade-out");
+    setTimeout(function() { splash.style.display = "none"; }, 400);
+  }, 1500);
+
+  init();
+
+  setInterval(function() {
+    if (isClosed() && guessForm.style.display !== "none") {
+      guessForm.style.display = "none";
+      nameGate.style.display = "none";
+      closedNotice.style.display = "block";
+    }
+  }, 60000);
+
+</script>
+</body>
+</html>
