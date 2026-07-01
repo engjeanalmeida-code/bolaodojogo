@@ -508,8 +508,8 @@
 <script>
   const SUPABASE_URL = "https://hbztfjlxbpghycjmabnc.supabase.co";
   const SUPABASE_KEY = "sb_publishable_6Fp_2dvD2qHDbNYS57qB8w_ObM8TeJg";
-  const NAME_STORAGE_KEY = "bolao_player_name";
-  const ADMIN_STORAGE_KEY = "bolao_admin_unlocked";
+  const NAME_STORAGE_KEY = "bolao2_player_name";
+  const ADMIN_STORAGE_KEY = "bolao2_admin_unlocked";
   const ADMIN_PASSWORD = "0101";
   const VALOR_PALPITE = 10;
   // Prazo: 05/07/2026, 16h55 horário de Brasília (UTC-3) = 05/07/2026 19:55 UTC
@@ -662,7 +662,7 @@
   async function togglePago(id, novoStatus, btnEl) {
     btnEl.disabled = true;
     try {
-      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites?id=eq." + id, {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites2?id=eq." + id, {
         method: "PATCH",
         headers: {
           "apikey": SUPABASE_KEY,
@@ -683,7 +683,7 @@
   async function deleteGuess(id, btnEl) {
     btnEl.disabled = true;
     try {
-      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites?id=eq." + id, {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites2?id=eq." + id, {
         method: "DELETE",
         headers: {
           "apikey": SUPABASE_KEY,
@@ -703,7 +703,7 @@
 
   async function loadResult() {
     try {
-      const res = await fetch(SUPABASE_URL + "/rest/v1/resultado_final?select=*&id=eq." + RESULT_ID, {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/resultado_final2?select=*&id=eq." + RESULT_ID, {
         headers: {
           "apikey": SUPABASE_KEY,
           "Authorization": "Bearer " + SUPABASE_KEY
@@ -732,7 +732,7 @@
     }
     saveResultBtn.disabled = true;
     try {
-      const res = await fetch(SUPABASE_URL + "/rest/v1/resultado_final", {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/resultado_final2", {
         method: "POST",
         headers: {
           "apikey": SUPABASE_KEY,
@@ -760,7 +760,7 @@
   async function clearResult() {
     clearResultBtn.disabled = true;
     try {
-      const res = await fetch(SUPABASE_URL + "/rest/v1/resultado_final?id=eq." + RESULT_ID, {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/resultado_final2?id=eq." + RESULT_ID, {
         method: "DELETE",
         headers: {
           "apikey": SUPABASE_KEY,
@@ -787,7 +787,7 @@
     deleteAllBtn.disabled = true;
     deleteAllBtn.textContent = "Excluindo...";
     try {
-      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites?id=neq.00000000-0000-0000-0000-000000000000", {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites2?id=neq.00000000-0000-0000-0000-000000000000", {
         method: "DELETE",
         headers: {
           "apikey": SUPABASE_KEY,
@@ -846,7 +846,7 @@
 
   async function loadAllGuesses() {
     try {
-      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites?select=*&order=criado_em.desc", {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/palpites2?select=*&order=criado_em.desc", {
         headers: {
           "apikey": SUPABASE_KEY,
           "Authorization": "Bearer " + SUPABASE_KEY
@@ -1000,7 +1000,7 @@
       }
       try {
         async function enviar(placarBr, placarHt) {
-          const res = await fetch(SUPABASE_URL + "/rest/v1/palpites", {
+          const res = await fetch(SUPABASE_URL + "/rest/v1/palpites2", {
             method: "POST",
             headers: {
               "apikey": SUPABASE_KEY,
@@ -1022,7 +1022,7 @@
       }
     } else {
       try {
-        const res = await fetch(SUPABASE_URL + "/rest/v1/palpites", {
+        const res = await fetch(SUPABASE_URL + "/rest/v1/palpites2", {
           method: "POST",
           headers: {
             "apikey": SUPABASE_KEY,
